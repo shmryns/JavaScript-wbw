@@ -1,0 +1,141 @@
+@import './base.scss';
+
+.nav {
+    @include center;
+
+    .logo {
+        margin: 50px 0 40px;
+    }
+}
+
+.main {
+    width: 988px;
+    height: 444px;
+    margin: 0 auto;
+    padding: 50px 0;
+    border: 2px solid #f0f0f0;
+
+    h5 {
+        font-weight: 400;
+        font-size: 28px;
+        color: #000;
+        padding-bottom: 30px;
+        text-align: center;
+    }
+
+    .container {
+        width: 338px;
+        margin: 0 auto;
+        color: #999;
+
+        p {
+            margin-top: 12px;
+            position: relative;
+
+            a {
+                color: #000;
+                line-height: 28px;
+            }
+
+            em {
+                display: block;
+                background-image: url(../images/a.png);
+                background-size: 589px;
+                width: 13px;
+                height: 16px;
+                position: absolute;
+                top: 12px;
+                left: 11px;
+
+                &.name {
+
+                    background-position: -576px -120px;
+                }
+
+                &.phone {
+                    background-position: -576px -25px;
+                }
+
+                &.pwd {
+                    background-position: -576px -51px;
+                }
+
+                &.yzm {
+                    background-position: -576px 0;
+                }
+            }
+
+            .eye {
+                top: 12px;
+                right: 11px;
+                position: absolute;
+                display: block;
+                background-image: url(../images/d.png);
+                background-position: -142px -92px;
+                background-size: 220px;
+                width: 16px;
+                height: 16px;
+
+                &.current {
+                    background-position: -188px -137px;
+                }
+            }
+
+            input {
+                width: 301px;
+                height: 38px;
+                line-height: 38px;
+                border: 1px solid #e8e8e8;
+                font-size: 12px;
+                background-color: transparent;
+                padding-left: 35px;
+
+                &::placeholder {
+                    color: rgb(204, 204, 204);
+                    font-size: 12px;
+                }
+            }
+
+            .captcha {
+                width: 195px;
+                margin-right: 5px;
+                display: inline-block;
+            }
+
+            #canvas {
+                width: 98px;
+                height: 38px;
+                float: right;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            button {
+                width: 340px;
+                height: 38px;
+                font-size: 14px;
+                background: #b32424;
+                color: #fff;
+                border: 0;
+                border-radius: 2px;
+                display: block;
+                margin: 25px auto 0;
+                line-height: 38px;
+            }
+
+            i {
+                line-height: 16px;
+                font-size: 10px;
+                color: #d00000;
+                display: block;
+                margin: 6px 0;
+                font-weight: 700;
+                padding-left: 18px;
+            }
+        }
+
+
+    }
+}
