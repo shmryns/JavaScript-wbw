@@ -11,6 +11,16 @@ $(function () {
         let flag = $(this).toggleClass('current').hasClass('current')
         flag ? $('[name=upwd2]').attr('type', 'text') : $('[name=upwd2]').attr('type', 'password')
     })
+    $('input').on('focus', function () {
+        $('form i').html('').siblings().css('border-color', '#e8e8e8')
+    })
+    $('input').eq(0).on('input', function () {
+        let uname = $(this).val()
+        $.get('http://useker.cn/checkName', { uname }, function ({ code, msg }) {
+            $('form b').eq(0).html(msg)
+            code ? $('form b').eq(0).css('color', 'green') : $('form b').eq(0).css('color', 'red')
+        })
+    })
     let flag = true;
     $('form').on('submit', function () {
         if (this.upwd1.value.trim() != this.upwd2.value.trim()) {
@@ -30,7 +40,7 @@ $(function () {
         }
         console.log(oUser);
         if (!(/^\w{1,}$/).test(oUser.uname)) {
-            $('[name="uname"]').next().html("用户名只能是数字,字母,下划线");
+            $('form i').eq(0).html("用户名只能是数字,字母,下划线");
             flag = false;
         }
         if (!(/^\w{6,}$/).test(oUser.upwd)) {
@@ -38,12 +48,15 @@ $(function () {
             flag = false;
         }
         if (!(/^[1][3-9]\d{9}$/).test(oUser.uphone)) {
-            $('[name="uphone"]').next().html("手机号不合法");
+            $('form i').eq(3).html("手机号不合法");
             flag = false;
         }
         if (flag) {
-            $.post('http://useker.cn/res', oUser, function (res) {
-                console.log(res);
+            $.post('http://useker.cn/reg', oUser, function ({ code }) {
+                if (code) {
+                    alert('注册成功')
+                    location = './login.html';
+                }
             })
         }
         return false;
