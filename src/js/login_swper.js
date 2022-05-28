@@ -82,7 +82,7 @@ class LoginSwper {
                 localStorage.setItem('sh_user', oUser.uname);
                 setTimeout(() => {
                     location = './index.html';    //成功登录
-                }, 2000)
+                }, 1000)
             });
             self.oYzm.hide()
             return false;

@@ -60,7 +60,16 @@ function sumPrice () {
     $(".sum").html(goods_sum);
     $(".total_price").html(price);
 }
-
+const empty = () => {
+    let goodsList = JSON.parse(getCookie("sh_cart") || '[]');
+    if (goodsList.length === 0) {
+        $('.wrap').hide();
+        $('.cart_empty').show();
+    } else {
+        $('.wrap').show();
+        $('.cart_empty').hide();
+    }
+}
 //登录人信息
 $(function () {
     const init = (uname) => {
@@ -81,6 +90,7 @@ $(function () {
 })
 
 $(function () {
+    empty();
     //取cookie的值渲染到页面
     let goodsList = JSON.parse(getCookie("sh_cart") || '[]');
     $('.renderGoods').append(renderGoods(goodsList));
@@ -150,6 +160,7 @@ $(function () {
             let goodsList = JSON.parse(getCookie("sh_cart"));
             goodsList.splice(index, 1);
             setCookie("sh_cart", JSON.stringify(goodsList));
+            setTimeout(() => { empty() }, 1000)
         }, function () {
             layer.msg('loading')
         });
@@ -172,6 +183,7 @@ $(function () {
                 numall();
                 allChecked();
                 sumPrice();
+                setTimeout(() => { empty() }, 1000)
                 $('.cn_top input').prop('checked', false);
             }
         }, function () {

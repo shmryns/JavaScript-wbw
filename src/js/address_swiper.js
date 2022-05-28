@@ -56,7 +56,6 @@ $(document).ready(function () {
                 '</span></li></ul>';
         });
     }
-    console.log(html);
     $(".goods_content").html(html);
     sumPrice();
     numall()
@@ -105,4 +104,81 @@ $(".goods_content").on("click", ".add_btn", function () {
     })
     setCookie("sh_cart", JSON.stringify(goodsList), 1);
     numall();
+});
+
+
+
+
+//三级联动
+new PCAS("province", "city", "area");
+// 添加收货地址
+$(".add_address").click(function () {
+    layer.open({
+        type: 1,
+        area: ['780px', '456px'], //宽高
+        content: $(".info_box"),
+        closeBtn: 0,
+    });
+});
+
+$(".cancel_btn").click(function () {
+    layer.closeAll();
+    $(".info_box").hide();
+});
+//添加收货地址
+var addressList = [];
+$(".save_btn").click(function () {
+    var name = $(".info_box .name_box input").val();
+    var tel = $(".info_box .tel_box input").val();
+    var street = $(".info_box .street_box input").val();
+    var province = $(".info_box select[name='province']").val();
+    var city = $(".info_box select[name='city']").val();
+    var area = $(".info_box select[name='area']").val();
+    var addressStr = {
+        name: name,
+        tel: tel,
+        street: street,
+        province: province,
+        city: city,
+        area: area,
+    }
+    if (name == "") {
+        $('.name_box span').html('姓名不能为空');
+        return false;
+    } else {
+        $('.name_box span').html();
+    }
+    if (!(/^[1][3-9]\d{9}$/).test(tel)) {
+        $('.tel_box span').html('输入的手机号不合法');
+        return false;
+    } else {
+        $('.tel_box span').html();
+    }
+    addressList.unshift(addressStr);
+    layer.closeAll();
+    $(".info_box").hide();
+    allAddress();
+    return false;
+
+});
+
+function allAddress () {
+    var _html = "";
+    addressList.forEach(function (item) {
+        _html += '<div class="address fl"><p><span>' + item.name + '&nbsp;</span><span>' + item
+            .tel + '</span></p><p><i class="iconfont icon-zb"></i><span class="province">' + item.province +
+            '</span><span class="city">' + item.city + '</span><span class="area">' + item.area +
+            '</span></p><p>' + item.street + '</p><span class="address_cover">删除</span></div>';
+    });
+    $(".address_box").html(_html);
+}
+$('.borderLeft').on('click', '.address_cover', function () {
+    $(this).parents(".address").remove()
+})
+
+
+$(".address_box").on("click", ".address", function () {
+    $(this).addClass("style").siblings().removeClass("style");
+    $(this).find("i").addClass("red").parents(".address").siblings().find("i").removeClass("red");
+    $(this).find("p:first").addClass("red").parents(".address").siblings().find("p:first").removeClass("red");
 });

@@ -7,7 +7,8 @@
     background-color: #f4f4f4;
 
     .top-w {
-        @include w;
+        width: 990px;
+        margin: 0 auto;
         height: 28px;
         line-height: 28px;
 
@@ -80,7 +81,8 @@
 }
 
 .head {
-    @include w;
+    width: 990px;
+    margin: 0 auto;
     height: 115px;
 
     .head-l {

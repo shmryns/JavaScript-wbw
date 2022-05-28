@@ -1,6 +1,9 @@
 import $ from "./libs/jquery.js";
 import { getCookie, setCookie, render } from "./libs/tools.js";
 
+window.addEventListener('load', function () {
+    lazyload()
+})
 //登录人信息
 $(function () {
     const init = (uname) => {
@@ -114,6 +117,24 @@ $(function () {
     })
 
     $('.button .btn').on('click', function () {
+        let uname = localStorage.getItem('sh_user') || undefined;
+        if (uname == null) {
+            layer.alert('加购失败,你还没有登录账号', {
+                closeBtn: 1,
+                anim: 2,
+                btn: ['取消', '去登录'],
+                icon: 2,
+                yes: function () {
+                    layer.msg('loading')
+                },
+                btn2: function () {
+                    layer.msg('跳转中...');
+                    location = './login.html';
+                }
+            })
+            return;
+        }
+        console.log(111);
         //获取数据存入cookie
         let id = $('.model_b i').text().trim();
         let name = $('.upper_r .title').text().trim();

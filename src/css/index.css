@@ -194,6 +194,10 @@ body .layui-layer-msg {
   float: left;
 }
 
+.top .top-w .top-fr .login .exper {
+  display: none;
+}
+
 .top .top-w .top-fr .login a {
   display: block;
   color: #999;

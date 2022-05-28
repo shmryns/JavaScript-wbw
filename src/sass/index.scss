@@ -31,6 +31,10 @@
             .login {
                 float: left;
 
+                .exper {
+                    display: none;
+                }
+
                 a {
                     display: block;
                     color: #999;

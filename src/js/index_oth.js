@@ -18,6 +18,9 @@ $(function () {
         let uname = localStorage.getItem('sh_user') || undefined;
         init(uname)
     })
+    $('.exper').on('click', function () {
+        localStorage.removeItem('sh_user')
+    })
 })
 //固定导航
 $(function () {
@@ -118,6 +121,7 @@ $(function () {
     }
 })
 
+//秒杀轮播
 $(function () {
     let index = 0;
     let flag = true;  //节流阀
@@ -129,17 +133,24 @@ $(function () {
     oLi3.appendTo($('.miaosha .timebuy .swiper ul'))
     let timer = $('.miaosha .timebuy .swiper').timer;
     init();
-    let change = () => {
-        $('.miaosha .timebuy .swiper ul').stop().animate({ left: -198 * index }, 1000, () => { flag = true })
+    let change = (fn) => {
+        $('.miaosha .timebuy .swiper ul').stop().animate({ left: -198 * 3 * index }, 300,
+            () => {
+                flag = true;
+                if (typeof fn === 'function') {
+                    fn()
+                }
+            })
     }
     function init () {
         timer = setInterval(() => {
             index++;
-            if (index >= 10) {
+            if (index >= 4) {
                 index = 1;
                 $('.miaosha .timebuy .swiper ul').css('left', 0)
-            } change()
-        }, 1500)
+            }
+            change()
+        }, 3000)
     }
     $('.miaosha .timebuy .swiper').on('mouseenter', function () {
         clearInterval(timer)
@@ -152,12 +163,15 @@ $(function () {
         }
         flag = false;
         index++;
-        change()
-        if (index >= 10) {
-            $('.miaosha .timebuy .swiper ul').animate({ 'left': 0 })
-            index = 1;
-        } change()
-        index = index
+        change(
+            function () {
+                if (index >= 3) {
+                    index = 0;
+                    $('.miaosha .timebuy .swiper ul').css('left', 0)
+                }
+            }
+        )
+        console.log(index);
     })
     $('.timebuy .swiper .prev').on('click', function () {
         if (!flag) {
@@ -165,11 +179,18 @@ $(function () {
         }
         flag = false;
         index--;
-        change()
-        if (index <= 0) index = 10 + index
+        change(
+            function () {
+                if (index < 1) {
+                    index = 3;
+                    $('.miaosha .timebuy .swiper ul').css('left', -198 * 9)
+                }
+            }
+        )
     })
 })
 
+//倒计时
 $(function () {
     let endDate = new Date(1653827925453)
     setInterval(() => {
@@ -182,6 +203,7 @@ $(function () {
         // $('.miaosha .time i').eq(3).html(res[5])
     }, 1000)
 })
+
 $(function () {
     $('.ppg_top ul>li').on('mouseenter', function (e) {
         let index = $(this).index();

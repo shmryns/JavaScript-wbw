@@ -648,7 +648,8 @@
 .name_box span:last-child,
 .street_box span:last-child {
     position: absolute;
-    right: 0px;
+    top: 0;
+    right: 10px;
     font-size: 14px;
     line-height: 35px;
     white-space: nowrap;
