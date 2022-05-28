@@ -1,6 +1,24 @@
 import $ from "./libs/jquery.js";
-import { fmtDateTime } from "./libs/tools.js";
+import { getCookie, setCookie, render, fmtDateTime } from "./libs/tools.js";
 
+//登录人信息
+$(function () {
+    const init = (uname) => {
+        if (uname != null) {
+            $('.top .login a').eq(0).html(`您好!&nbsp;&nbsp;&nbsp;wb${uname}`);
+            $('.top .login a').eq(1).hide();
+            $('.top .login a').eq(2).show();
+            $('.login_tip').css('display', 'none');
+        }
+    }
+    let uname = localStorage.getItem('sh_user');
+    init(uname);
+    //监听登录人信息
+    window.addEventListener('storage', function () {
+        let uname = localStorage.getItem('sh_user') || undefined;
+        init(uname)
+    })
+})
 //固定导航
 $(function () {
     let nav = $('.nav').clone(true);
@@ -16,11 +34,14 @@ $(function () {
     $(window).on('scroll', function () {
         if ($(this).scrollTop() > 143) {
             nav.show();
+            $('.nav-s').show();
         } else {
             nav.hide();
+            $('.nav-s').hide();
         }
     })
 })
+
 $(function () {
     $('.m_box').on('mouseenter', function () {
         $('.sub').hide().eq($(this).index()).show()
@@ -29,10 +50,24 @@ $(function () {
     })
 })
 
+//banner 轮播
 $(function () {
     let index = 0;
     let timer = $('.banner .swiper').get(0).timer;
     let flag = true;
+    $('.pointer span').on('click', function () {
+        console.log($(this).index());
+        index = $(this).index();
+        change()
+    }).on('mouseenter', function () {
+        clearTimeout(timer)
+    }).on('mouseleave', function () {
+        timer = setInterval(() => {
+            index++;
+            if (index >= 7) index = 0;
+            change()
+        }, 2500)
+    })
     $('.banner .swiper .next').on('click', function () {
         if (!flag) {
             return
@@ -79,7 +114,7 @@ $(function () {
     }, 2500)
     const change = () => {
         $('.banner .swiper li').eq(index).stop().animate({ opacity: 1 }, 1200, () => { flag = true }).siblings().animate({ opacity: 0 }, 800);
-        $('.banner .pointer span').eq(index).stop().addClass('current').siblings().removeClass('current');
+        $('.banner .pointer span').eq(index).addClass('current').siblings().removeClass('current');
     }
 })
 
@@ -171,7 +206,7 @@ $(function () {
             } else {
                 $('.panel_r').animate({ right: 0 }, 300)
                 $('.panel_l').animate({ right: 262 }, 300)
-                $(this).css('background-color', '#000')
+                $(this).css('background-color', '#000');
             }
         } if ($(this).index() === 4) {
             $('html,body').animate({ scrollTop: 0 }, 400)
@@ -182,5 +217,53 @@ $(function () {
         $('.panel_r').animate({ right: -262 }, 300)
         $('.panel_l').animate({ right: 0 }, 300)
         $('.panel_l a').eq(0).css('background-color', '#fff')
+    })
+
+    const change = (a, b) => {
+        let goodsList = JSON.parse(getCookie("sh_cart") || '[]');
+        let addNum = 0;
+        let addTotal = 0;
+        goodsList.forEach(item => addNum += parseInt(item.num))
+        goodsList.forEach(item => addTotal += parseFloat(item.total))
+        if (a == b && b == undefined) {
+            $('.cart_bottom i').html(addNum);
+            $('.panel_l>a>em').html(addNum);
+            $('.cart>span>i').html(addNum);
+            $('.nav-s .gwc i').html(addNum);
+            $('.cart_bottom b').html(`￥ ${parseFloat(addTotal)}`);
+        } else {
+            $('.cart_bottom i').html(a);
+            $('.panel_l>a>em').html(a);
+            $('.cart_bottom b').html(`￥ ${b}`);
+        }
+    }
+    const init = () => {
+        let goodsList = JSON.parse(getCookie("sh_cart") || '[]');
+        if (goodsList != false) {
+            $('.cart_empty').hide();
+            $('.cart_list').append(render(goodsList));
+            change();
+        } else {
+            $('.cart_empty').show();
+            change(0, 0);
+        }
+    }
+    init();
+    $('.cart_list').on('mouseenter', '.goods', function () {
+        $(this).find('.del').show();
+    }).on('mouseleave', '.goods', function () {
+        $(this).find('.del').hide();
+    }).on('click', '.goods', function ({ target }) {
+        if (target.className != 'del') {
+            return false
+        }
+        let style = $(target).parents('.goods').find('.p1').eq(1).text().trim();
+        console.log(style);
+        let goodsList = JSON.parse(getCookie("sh_cart") || '[]');
+        let index = goodsList.findIndex(item => item.style == style)
+        goodsList.splice(index, 1);
+        setCookie("sh_cart", JSON.stringify(goodsList), 1);
+        $(target).parents('.goods').remove();
+        change()
     })
 })

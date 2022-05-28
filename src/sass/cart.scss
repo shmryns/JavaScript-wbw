@@ -1,5 +1,6 @@
 @import './base.scss';
 
+
 //顶部区域
 .top {
     width: 100%;
@@ -87,6 +88,60 @@
         width: 404px;
         float: left;
     }
+
+    .head-r {
+        margin-top: 35px;
+        margin-right: 40px;
+        float: right;
+
+        ul {
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+
+            li {
+                position: relative;
+                width: 156px;
+                display: block;
+                float: left;
+                color: #999;
+                text-align: center;
+                margin-top: 5px;
+
+                i {
+                    position: absolute;
+                    display: inline-block;
+                    margin-left: -4px;
+                    border-radius: 50%;
+                    z-index: 2;
+                    width: 10px;
+                    height: 10px;
+                    margin-top: -21px;
+                    border: 2px solid #ccc;
+                    box-sizing: border-box;
+                }
+
+                span {
+                    display: block;
+                }
+
+                &:first-child {
+                    margin-left: -78px;
+                    color: #cc5252;
+                }
+
+                &:last-child {
+                    margin-right: -78px;
+                }
+
+                &:first-child i {
+                    width: 16px;
+                    height: 16px;
+                    margin-top: -24px;
+                    background: #cc5252;
+                }
+            }
+        }
+    }
 }
 
 .main {
@@ -157,15 +212,12 @@
                 height: 44px;
                 float: left;
 
-                i {
+                .all {
                     position: absolute;
                     top: 16px;
                     left: 16px;
                     cursor: pointer;
                     display: block;
-                    background-image: url(../images/a.png);
-                    background-position: -576px -255px;
-                    background-size: 589px;
                     width: 12px;
                     height: 12px;
                 }
@@ -287,13 +339,10 @@
                 height: 12px;
                 left: -34px;
 
-                i {
+                input {
                     position: absolute;
                     cursor: pointer;
                     display: block;
-                    background-image: url(../images/a.png);
-                    background-position: -576px -255px;
-                    background-size: 589px;
                     width: 12px;
                     height: 12px;
                 }
@@ -306,6 +355,11 @@
                 height: 90px;
                 overflow: hidden;
                 text-align: center;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
             }
 
             .goods_txt {

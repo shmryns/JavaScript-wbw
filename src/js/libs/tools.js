@@ -57,6 +57,44 @@ function code_randomColor () { //得到随机的颜色值
     return "rgb(" + r + "," + g + "," + b + ")";
 }
 
+export function setCookie (cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+
+export function getCookie (cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i].trim();
+        var arrC = c.split("=");
+        if (arrC[0] == cname) {
+            return arrC[1];
+        }
+    }
+    return "";
+}
+
+//渲染到页面
+export const render = (arr) => {
+    return arr.reduce(function (pre, cur) {
+        return pre += `
+        <div class="goods">
+            <a href="javascript:void(0)" class="fl">
+                <img src="${cur.photo}" alt="">
+            </a>
+            <a href="javascript:void(0)" class="fl">
+                <p class="p1">${cur.name}</p>
+                <p class="p1">${cur.style}</p>
+                <p class="p2 fl">￥ <b>${cur.price}&nbsp;</b>X<i>${cur.num}</i></p>
+            </a>
+            <span class="del">删除</span>
+        </div>`
+    }, '')
+}
+
 /**
  * 日期格式
  * @param {*} timestamp 时间戳

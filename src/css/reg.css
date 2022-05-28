@@ -45,6 +45,7 @@ li {
 a,
 u {
   text-decoration: none;
+  color: inherit;
 }
 
 i,
@@ -67,6 +68,94 @@ input {
   height: 1.5em;
   display: block;
   outline: none;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+
+body .layui-layer-dialog {
+  width: 400px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+body .layui-layer-content {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  line-height: 40px !important;
+}
+
+body .layui-layer-content p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+body .layui-layer-btn0 {
+  width: 78px;
+  height: 38px !important;
+  padding: 0px !important;
+  font-size: 14px !important;
+  text-align: center;
+  line-height: 40px !important;
+  border-radius: 19px !important;
+  border: 1px solid #999 !important;
+  color: #999 !important;
+  background-color: #fff !important;
+}
+
+body .layui-layer-btn1 {
+  width: 78px;
+  height: 38px !important;
+  padding: 0px !important;
+  font-size: 14px !important;
+  text-align: center;
+  line-height: 40px !important;
+  border-radius: 19px !important;
+  border: 1px solid #cc5252 !important;
+  color: #fff !important;
+  background-color: #cc5252 !important;
+  font-weight: bold;
+}
+
+body .layui-layer-msg {
+  width: 120px !important;
+  height: 45px !important;
+  text-align: center;
+  line-height: 50px !important;
+  padding: 0px 0px !important;
+  border-radius: 5px !important;
+}
+
+@font-face {
+  font-family: "iconfont";
+  /* Project id  */
+  src: url("iconfont.ttf?t=1623600366130") format("truetype");
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-zb:before {
+  content: "\e615";
 }
 
 .nav {
@@ -175,7 +264,7 @@ input {
 }
 
 .main .container p #canvas {
-  width: 98px;
+  width: 97px;
   height: 38px;
   float: right;
   display: inline-block;
@@ -195,6 +284,7 @@ input {
   display: block;
   margin: 25px auto 0;
   line-height: 38px;
+  cursor: pointer;
 }
 
 .main .container p i {

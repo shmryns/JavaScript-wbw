@@ -8,6 +8,7 @@
     <title>万表网</title>
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./css/cart.min.css">
+    <script src="./js/cart_main.js" type="module"></script>
 </head>
 
 <body>
@@ -25,7 +26,7 @@
                 </div>
                 <div class="other">
                     <span class="line">丨</span>
-                    <a href="" class="cart">购物车<span>(<i>6</i>)</span></a>
+                    <a href="" class="cart">购物车<span>(<i>0</i>)</span></a>
                     <a href="javascript:void(0)">客户服务</a>
                     <a href="javascript:void(0)">会员福利</a>
                     <span class="line">丨</span>
@@ -35,7 +36,7 @@
         </div>
     </div>
 
-    
+
     <div class="head">
         <div class="head-l">
             <a href="javascript:void(0)">
@@ -43,10 +44,18 @@
                 <img src="./images/slogan02.png" alt="">
             </a>
         </div>
+        <div class="head-r">
+            <ul>
+                <li><i></i><span>购物车</span></li>
+                <li><i></i><span>填写订单信息</span></li>
+                <li><i></i><span>支付订单</span></li>
+                <li><i></i><span>等待签收</span></li>
+            </ul>
+        </div>
     </div>
     <div class="main">
         <div class="wrap">
-            <h2>全部商品 ( <em>3</em> )</h2>
+            <h2>全部商品 ( <em>0</em> )</h2>
             <div style="height:54px">
                 <div class="nav">
                     <span>商品信息</span>
@@ -60,132 +69,21 @@
             </div>
             <div class="content">
                 <div class="cn_top">
-                    <span><i class="all"></i></span>全选
+                    <span><input type="checkbox" class="all"></span>全选
                 </div>
-                <div class="goods">
-                    <div class="goods_r">
-                        <span>
-                            <i></i>
-                        </span>
-                        <div class="goods_img">
-                            <img src="./images/container17.jpg" alt="">
-                        </div>
-                        <div class="goods_txt">
-                            <p class="p1">汉米尔顿Hamilton-卡其野战系列 H69439901 手动机械男表</p>
-                            <p class="p2">咖啡色 织物</p>
-                        </div>
-                        <ul>
-                            <li class="price">￥<em>666</em></li>
-                            <li class="num"><span>-</span>
-                                <input type="text"><span>+</span>
-                            </li>
-                            <li class="price">￥<em>666</em></li>
-                            <li><a href="javascript:void(0)">删除</a></li>
-                        </ul>
-                    </div>
-                    <div class="bottom"></div>
+                <div class="renderGoods clearfix">
+                    <!-- 渲染的购物车数据 -->
                 </div>
-                <div class="goods">
-                    <div class="goods_r">
-                        <span>
-                            <i></i>
-                        </span>
-                        <div class="goods_img">
-                            <img src="./images/container17.jpg" alt="">
-                        </div>
-                        <div class="goods_txt">
-                            <p class="p1">汉米尔顿Hamilton-卡其野战系列 H69439901 手动机械男表</p>
-                            <p class="p2">咖啡色 织物</p>
-                        </div>
-                        <ul>
-                            <li class="price">￥<em>666</em></li>
-                            <li class="num"><span>-</span>
-                                <input type="text"><span>+</span>
-                            </li>
-                            <li class="price">￥<em>666</em></li>
-                            <li><a href="javascript:void(0)">删除</a></li>
-                        </ul>
-                    </div>
-                    <div class="bottom"></div>
-                </div>
-                <div class="goods">
-                    <div class="goods_r">
-                        <span>
-                            <i></i>
-                        </span>
-                        <div class="goods_img">
-                            <img src="./images/container17.jpg" alt="">
-                        </div>
-                        <div class="goods_txt">
-                            <p class="p1">汉米尔顿Hamilton-卡其野战系列 H69439901 手动机械男表</p>
-                            <p class="p2">咖啡色 织物</p>
-                        </div>
-                        <ul>
-                            <li class="price">￥<em>666</em></li>
-                            <li class="num"><span>-</span>
-                                <input type="text"><span>+</span>
-                            </li>
-                            <li class="price">￥<em>666</em></li>
-                            <li><a href="javascript:void(0)">删除</a></li>
-                        </ul>
-                    </div>
-                    <div class="bottom"></div>
-                </div>
-                <div class="goods">
-                    <div class="goods_r">
-                        <span>
-                            <i></i>
-                        </span>
-                        <div class="goods_img">
-                            <img src="./images/container17.jpg" alt="">
-                        </div>
-                        <div class="goods_txt">
-                            <p class="p1">汉米尔顿Hamilton-卡其野战系列 H69439901 手动机械男表</p>
-                            <p class="p2">咖啡色 织物</p>
-                        </div>
-                        <ul>
-                            <li class="price">￥<em>666</em></li>
-                            <li class="num"><span>-</span>
-                                <input type="text"><span>+</span>
-                            </li>
-                            <li class="price">￥<em>666</em></li>
-                            <li><a href="javascript:void(0)">删除</a></li>
-                        </ul>
-                    </div>
-                    <div class="bottom"></div>
-                </div>
-                <div class="goods">
-                    <div class="goods_r">
-                        <span>
-                            <i></i>
-                        </span>
-                        <div class="goods_img">
-                            <img src="./images/container17.jpg" alt="">
-                        </div>
-                        <div class="goods_txt">
-                            <p class="p1">汉米尔顿Hamilton-卡其野战系列 H69439901 手动机械男表</p>
-                            <p class="p2">咖啡色 织物</p>
-                        </div>
-                        <ul>
-                            <li class="price">￥<em>666</em></li>
-                            <li class="num"><span>-</span>
-                                <input type="text"><span>+</span>
-                            </li>
-                            <li class="price">￥<em>666</em></li>
-                            <li><a href="javascript:void(0)">删除</a></li>
-                        </ul>
-                    </div>
-                    <div class="bottom"></div>
-                </div>
+
                 <div class="fool">
                     <ul>
-                        <li><a href="javascript:void(0)">删除</a></li>
+                        <li><a href="javascript:void(0)" class="delall">删除</a></li>
                         <li><a href="javascript:void(0)">移入收藏</a></li>
                         <li><a href="javascript:void(0)">清空失效商品</a></li>
-                        <li><span>已选商品<em>2</em>件</span></li>
-                        <li><a href="javascript:void(0)">结算</a></li>
+                        <li><span>已选商品<em class="sum">0</em>件</span></li>
+                        <li><a href="javascript:void(0)" class="gogo">结算</a></li>
                         <li>
-                            <p>合计<span>￥<i>666</i></span></p>
+                            <p>合计<span>￥<i class="total_price">0</i></span></p>
                         </li>
                     </ul>
                 </div>
@@ -286,6 +184,8 @@
             </div>
         </div>
     </div>
+    <script src="./js/libs/3.1.1/jquery.min.js"></script>
+    <script src="./js/libs/3.1.1/layer.js"></script>
 </body>
 
 </html>

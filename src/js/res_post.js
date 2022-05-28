@@ -1,5 +1,6 @@
 import $ from "./libs/jquery.js"
 import { code_draw } from "./libs/tools.js";
+
 $(function () {
     code_draw();
     $('#canvas').on('click', () => code_draw())
@@ -23,6 +24,19 @@ $(function () {
     })
     let flag = true;
     $('form').on('submit', function () {
+        // layer.alert('注册成功', {
+        //     closeBtn: 1,
+        //     anim: 2,
+        //     btn: ['取消', '去登录'],
+        //     icon: 6,
+        //     yes: function () {
+        //         layer.msg('loading')
+        //     },
+        //     btn2: function () {
+        //         layer.msg('跳转中...');
+        //         location = './login.html';
+        //     }
+        // })
         if (this.upwd1.value.trim() != this.upwd2.value.trim()) {
             $('.mmcw').html('两次密码不一致，请检查您的密码')
             return false
@@ -36,9 +50,8 @@ $(function () {
             upwd: this.upwd1.value.trim(),
             uphone: this.uphone.value.trim(),
             uage: 22,
-            realname: '金花',
+            realname: '测试',
         }
-        console.log(oUser);
         if (!(/^\w{1,}$/).test(oUser.uname)) {
             $('form i').eq(0).html("用户名只能是数字,字母,下划线");
             flag = false;
@@ -51,11 +64,29 @@ $(function () {
             $('form i').eq(3).html("手机号不合法");
             flag = false;
         }
+        console.log(flag);
         if (flag) {
-            $.post('http://useker.cn/reg', oUser, function ({ code }) {
-                if (code) {
-                    alert('注册成功')
-                    location = './login.html';
+            $.post('http://useker.cn/reg', oUser, function (res) {
+                if (!res) {
+                    res = JSON.parse(res);
+                }
+                console.log(res);
+                if (res.code == 0) {
+                    $('form i').eq(3).html(`该手机号已经注册 <a style="color:#4e6ef2;cursor:pointer">点击找回密码</a>`);
+                } else {
+                    layer.alert('注册成功', {
+                        closeBtn: 1,
+                        anim: 2,
+                        btn: ['取消', '去登录'],
+                        icon: 6,
+                        yes: function () {
+                            layer.msg('loading')
+                        },
+                        btn2: function () {
+                            layer.msg('跳转中...');
+                            location = './login.html';
+                        }
+                    })
                 }
             })
         }

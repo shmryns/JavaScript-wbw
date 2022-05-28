@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body,
 div,
 article,
@@ -45,6 +46,7 @@ li {
 a,
 u {
   text-decoration: none;
+  color: inherit;
 }
 
 i,
@@ -68,6 +70,94 @@ input {
   height: 1.5em;
   display: block;
   outline: none;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+
+body .layui-layer-dialog {
+  width: 400px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+body .layui-layer-content {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  line-height: 40px !important;
+}
+
+body .layui-layer-content p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+body .layui-layer-btn0 {
+  width: 78px;
+  height: 38px !important;
+  padding: 0px !important;
+  font-size: 14px !important;
+  text-align: center;
+  line-height: 40px !important;
+  border-radius: 19px !important;
+  border: 1px solid #999 !important;
+  color: #999 !important;
+  background-color: #fff !important;
+}
+
+body .layui-layer-btn1 {
+  width: 78px;
+  height: 38px !important;
+  padding: 0px !important;
+  font-size: 14px !important;
+  text-align: center;
+  line-height: 40px !important;
+  border-radius: 19px !important;
+  border: 1px solid #cc5252 !important;
+  color: #fff !important;
+  background-color: #cc5252 !important;
+  font-weight: bold;
+}
+
+body .layui-layer-msg {
+  width: 120px !important;
+  height: 45px !important;
+  text-align: center;
+  line-height: 50px !important;
+  padding: 0px 0px !important;
+  border-radius: 5px !important;
+}
+
+@font-face {
+  font-family: "iconfont";
+  /* Project id  */
+  src: url("iconfont.ttf?t=1623600366130") format("truetype");
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-zb:before {
+  content: "\e615";
 }
 
 .top {
@@ -318,22 +408,123 @@ input {
 }
 
 .nav .nav-l .menu .m_box .sub {
+  width: 998px;
+  padding-top: 23px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
   position: absolute;
-  width: 260px;
   height: 460px;
   top: 0;
   left: 200px;
   background-color: #fff;
   display: none;
   cursor: pointer;
+  /* 右侧品牌列表 */
+  /* 品牌遮罩名称 */
 }
 
-.nav .nav-l .menu .m_box .sub img {
-  margin-left: 23px;
-  margin-top: 24px;
+.nav .nav-l .menu .m_box .sub .brand_list {
+  width: 998px;
+  background-color: #fff;
+  padding-top: 23px;
+  border: 1px solid #ccc;
+  position: absolute;
+  left: 100%;
+  top: 0px;
+  display: none;
 }
 
-.nav .nav-l a {
+.nav .nav-l .menu .m_box .sub .brand_list_tips {
+  font-size: 14px;
+  font-weight: 600px;
+  color: #666;
+  padding-left: 7px;
+  margin-left: 24px;
+  margin-bottom: 12px;
+  border-left: 4px solid #666666;
+}
+
+.nav .nav-l .menu .m_box .sub .brand_list_content {
+  width: 717px;
+  max-height: 278px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin: 0px 28px 15px 24px;
+}
+
+.nav .nav-l .menu .m_box .sub .brand_list_content::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 4px;
+}
+
+.nav .nav-l .menu .m_box .sub .brand_list_content::-webkit-scrollbar-thumb {
+  background-color: #d8d8d8;
+  border-radius: 4px;
+}
+
+.nav .nav-l .menu .m_box .sub .brand_list_content > li {
+  width: 139px;
+  border: 1px solid #e6e6e6;
+  padding: 18.5px 0px;
+  position: relative;
+  text-align: center;
+}
+
+.nav .nav-l .menu .m_box .sub .brand_list_image {
+  width: 100px;
+  height: 40px;
+  margin: 0 auto;
+}
+
+.nav .nav-l .menu .m_box .sub .brand_list_image img {
+  height: 100%;
+}
+
+.nav .nav-l .menu .m_box .sub .hot_word {
+  margin-top: 12px;
+  margin-left: 24px;
+}
+
+.nav .nav-l .menu .m_box .sub .hot_word span {
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 18px;
+  border-radius: 18px;
+  border: 1px solid #eee;
+  font-size: 14px;
+  color: #666;
+}
+
+.nav .nav-l .menu .m_box .sub .hot_word span:hover {
+  background-color: #ccaa7a;
+  color: #fff;
+}
+
+.nav .nav-l .menu .m_box .sub .w_left_menu > ul > li:hover .brand_list {
+  display: block;
+}
+
+.nav .nav-l .menu .m_box .sub .w_content_name {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 79px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+  background-color: #ccaa7a;
+  text-align: center;
+}
+
+.nav .nav-l .menu .m_box .sub .brand_list_content > li:hover .w_content_name {
+  display: block;
+}
+
+.nav .nav-l .a {
   height: 48px;
   line-height: 48px;
   display: block;
@@ -343,11 +534,11 @@ input {
   background-color: #b32424;
 }
 
-.nav .nav-l a .logo {
+.nav .nav-l .a .logo {
   font-size: 14px;
 }
 
-.nav .nav-l a i {
+.nav .nav-l .a i {
   background-image: url("../images/a.png");
   background-position: -280px -325px;
   background-size: 589px;
@@ -377,6 +568,60 @@ input {
 
 .nav .nav-r li a:hover {
   border-bottom: 3px solid #cc5252;
+}
+
+.nav .nav-s {
+  display: none;
+  position: absolute;
+  z-index: 20;
+  width: 96px;
+  height: 48px;
+  left: 92%;
+  top: 0;
+}
+
+.nav .nav-s div {
+  position: relative;
+  display: block;
+  width: 48px;
+  height: 48px;
+  text-align: center;
+  cursor: pointer;
+  float: left;
+}
+
+.nav .nav-s div span {
+  display: inline-block;
+  margin-top: 8px;
+  background-image: url(../images/b.png);
+  background-position: -443px -84px;
+  background-size: 475px px;
+  width: 32px;
+  height: 32px;
+}
+
+.nav .nav-s div b, .nav .nav-s div .main .index p i, .main .index p .nav .nav-s div i {
+  display: inline-block;
+  margin-top: 12px;
+  background-image: url(../images/a.png);
+  background-position: -507px -382px;
+  background-size: 589px;
+  width: 24px;
+  height: 24px;
+}
+
+.nav .nav-s div i {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: 5px;
+  top: 3px;
+  text-align: center;
+  line-height: 15px;
+  color: #fff;
+  font-size: 10px;
+  background: #b32424;
+  border-radius: 50%;
 }
 
 .main {
@@ -1062,6 +1307,7 @@ input {
 
 .carts .guess a .img {
   width: 223px;
+  height: 223px;
   position: relative;
   margin: 0 auto;
 }
@@ -1423,7 +1669,7 @@ input {
   float: right;
 }
 
-.panel .panel_r p {
+.panel .panel_r .login_tip {
   height: 32px;
   line-height: 32px;
   padding: 0 12px;
@@ -1431,17 +1677,18 @@ input {
   color: #666;
 }
 
-.panel .panel_r p span {
+.panel .panel_r .login_tip span {
   float: left;
 }
 
-.panel .panel_r p a {
+.panel .panel_r .login_tip a {
   color: #477db3;
   line-height: 32px;
   float: right;
 }
 
 .panel .panel_r .cart_empty {
+  display: none;
   width: 100%;
   position: absolute;
   top: 50%;
@@ -1458,4 +1705,99 @@ input {
   background-size: 589px;
   width: 55px;
   height: 51px;
+}
+
+.panel .panel_r .cart_list {
+  width: 278px;
+  height: 86.5%;
+  overflow-y: scroll;
+}
+
+.panel .panel_r .cart_list .goods {
+  position: relative;
+  background: #fff;
+  margin-top: 8px;
+  height: 94px;
+}
+
+.panel .panel_r .cart_list .goods .del {
+  display: none;
+  position: absolute;
+  bottom: 19px;
+  right: 35px;
+  color: #477db3;
+  z-index: 1000;
+  cursor: pointer;
+  float: left;
+}
+
+.panel .panel_r .cart_list .goods a {
+  position: relative;
+  z-index: 300;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  margin: 16px 8px;
+  text-align: center;
+}
+
+.panel .panel_r .cart_list .goods a:nth-child(2) {
+  width: 170px;
+  color: #666;
+  margin: 16px 0;
+}
+
+.panel .panel_r .cart_list .goods a img {
+  width: 100%;
+}
+
+.panel .panel_r .cart_list .goods a .p1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.panel .panel_r .cart_list .goods a p {
+  line-height: 18px;
+  margin-bottom: 3px;
+  text-align: start;
+}
+
+.panel .panel_r .cart_list .goods a p i {
+  margin-left: 10px;
+  color: #999;
+}
+
+.panel .panel_r .cart_bottom {
+  position: absolute;
+  bottom: 0;
+  width: 236px;
+  height: 48px;
+  padding: 0 12px;
+  background: #fff;
+  border: 1px solid #ddd;
+}
+
+.panel .panel_r .cart_bottom em {
+  color: #666;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 2px;
+}
+
+.panel .panel_r .cart_bottom b, .panel .panel_r .cart_bottom .main .index p i, .main .index p .panel .panel_r .cart_bottom i {
+  color: #cc5252;
+  margin-left: -3px;
+}
+
+.panel .panel_r .cart_bottom a {
+  display: inline-block;
+  width: 120px;
+  height: 32px;
+  line-height: 32px;
+  color: #fff;
+  background: #cc5252;
+  border-radius: 100px;
+  text-align: center;
+  margin-top: 8px;
 }

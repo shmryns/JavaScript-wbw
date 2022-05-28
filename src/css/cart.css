@@ -45,6 +45,7 @@ li {
 a,
 u {
   text-decoration: none;
+  color: inherit;
 }
 
 i,
@@ -67,6 +68,94 @@ input {
   height: 1.5em;
   display: block;
   outline: none;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+
+body .layui-layer-dialog {
+  width: 400px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+body .layui-layer-content {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  line-height: 40px !important;
+}
+
+body .layui-layer-content p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+body .layui-layer-btn0 {
+  width: 78px;
+  height: 38px !important;
+  padding: 0px !important;
+  font-size: 14px !important;
+  text-align: center;
+  line-height: 40px !important;
+  border-radius: 19px !important;
+  border: 1px solid #999 !important;
+  color: #999 !important;
+  background-color: #fff !important;
+}
+
+body .layui-layer-btn1 {
+  width: 78px;
+  height: 38px !important;
+  padding: 0px !important;
+  font-size: 14px !important;
+  text-align: center;
+  line-height: 40px !important;
+  border-radius: 19px !important;
+  border: 1px solid #cc5252 !important;
+  color: #fff !important;
+  background-color: #cc5252 !important;
+  font-weight: bold;
+}
+
+body .layui-layer-msg {
+  width: 120px !important;
+  height: 45px !important;
+  text-align: center;
+  line-height: 50px !important;
+  padding: 0px 0px !important;
+  border-radius: 5px !important;
+}
+
+@font-face {
+  font-family: "iconfont";
+  /* Project id  */
+  src: url("iconfont.ttf?t=1623600366130") format("truetype");
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-zb:before {
+  content: "\e615";
 }
 
 .top {
@@ -152,6 +241,60 @@ input {
   float: left;
 }
 
+.head .head-r {
+  margin-top: 35px;
+  margin-right: 40px;
+  float: right;
+}
+
+.head .head-r ul {
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+}
+
+.head .head-r ul li {
+  position: relative;
+  width: 156px;
+  display: block;
+  float: left;
+  color: #999;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.head .head-r ul li i {
+  position: absolute;
+  display: inline-block;
+  margin-left: -4px;
+  border-radius: 50%;
+  z-index: 2;
+  width: 10px;
+  height: 10px;
+  margin-top: -21px;
+  border: 2px solid #ccc;
+  box-sizing: border-box;
+}
+
+.head .head-r ul li span {
+  display: block;
+}
+
+.head .head-r ul li:first-child {
+  margin-left: -78px;
+  color: #cc5252;
+}
+
+.head .head-r ul li:last-child {
+  margin-right: -78px;
+}
+
+.head .head-r ul li:first-child i {
+  width: 16px;
+  height: 16px;
+  margin-top: -24px;
+  background: #cc5252;
+}
+
 .main {
   width: 1200px;
   margin: 0 auto;
@@ -224,15 +367,12 @@ input {
   float: left;
 }
 
-.main .wrap .cn_top span i {
+.main .wrap .cn_top span .all {
   position: absolute;
   top: 16px;
   left: 16px;
   cursor: pointer;
   display: block;
-  background-image: url(../images/a.png);
-  background-position: -576px -255px;
-  background-size: 589px;
   width: 12px;
   height: 12px;
 }
@@ -352,13 +492,10 @@ input {
   left: -34px;
 }
 
-.main .goods .goods_r span i {
+.main .goods .goods_r span input {
   position: absolute;
   cursor: pointer;
   display: block;
-  background-image: url(../images/a.png);
-  background-position: -576px -255px;
-  background-size: 589px;
   width: 12px;
   height: 12px;
 }
@@ -370,6 +507,11 @@ input {
   height: 90px;
   overflow: hidden;
   text-align: center;
+}
+
+.main .goods .goods_r .goods_img img {
+  width: 100%;
+  height: 100%;
 }
 
 .main .goods .goods_r .goods_txt {
