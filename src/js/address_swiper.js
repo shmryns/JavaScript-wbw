@@ -159,7 +159,15 @@ $(".save_btn").click(function () {
     $(".info_box").hide();
     allAddress();
     return false;
-
+});
+//清空提示
+$(".info_box .name_box input").focus(function () {
+    $('.name_box span').html();
+    $('.tel_box span').html();
+});
+$(".info_box .tel_box input").focus(function () {
+    $('.name_box span').html();
+    $('.tel_box span').html();
 });
 
 function allAddress () {
