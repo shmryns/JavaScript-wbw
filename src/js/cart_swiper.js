@@ -19,7 +19,7 @@ const renderGoods = (arr) => {
             <ul>
                 <li class="price">￥<em>${cur.price}</em></li>
                 <li class="num"><span class="less">-</span>
-                    <input type="text" value="${cur.num}"><span class='add'>+</span>
+                    <input type="number" value="${cur.num}"><span class='add'>+</span>
                 </li>
                 <li class="total">￥<em>${cur.total}</em></li>
                 <li><a href="javascript:void(0)" class="del">删除</a></li>
@@ -95,6 +95,28 @@ $(function () {
     let goodsList = JSON.parse(getCookie("sh_cart") || '[]');
     $('.renderGoods').append(renderGoods(goodsList));
     numall();
+    //手动改input的值
+    $('.renderGoods').on('input', 'input', function () {
+        if ($(this).val() == '') {
+            return 
+        }
+        let num = parseInt($(this).val());
+        let price = parseFloat($(this).parents(".goods").find(".price em").text());
+        $(this).parents(".goods").find(".total em").text(num * price);
+        let style = $(this).parents(".goods").find(".goods_txt p").eq(1).text().trim();
+        let subtotal = $(this).parents(".goods").find(".total em").text().trim();
+        let goodsList = JSON.parse(getCookie('sh_cart'));
+        goodsList.forEach(function (item) {
+            if (item.style == style) {
+                item.num = num;
+                item.total = subtotal;
+            }
+        })
+        setCookie("sh_cart", JSON.stringify(goodsList), 1);
+        sumPrice()
+        numall();
+    })
+
     //减
     $('.renderGoods').on('click', '.less', function () {
         let num = parseInt($(this).next("input").val());

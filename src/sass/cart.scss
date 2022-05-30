@@ -1,5 +1,10 @@
 @import './base.scss';
 
+//去掉input的number默认的加减号
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
 
 //顶部区域
 .top {

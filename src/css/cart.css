@@ -158,6 +158,11 @@ body .layui-layer-msg {
   content: "\e615";
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 .top {
   width: 100%;
   background-color: #f4f4f4;

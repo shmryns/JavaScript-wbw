@@ -3,6 +3,7 @@ import { code_draw } from "./libs/tools.js";
 
 $(function () {
     code_draw();
+    let flag = true;
     $('#canvas').on('click', () => code_draw())
     $('.eye').eq(0).on('click', function () {
         let flag = $(this).toggleClass('current').hasClass('current')
@@ -20,9 +21,13 @@ $(function () {
         $.get('http://useker.cn/checkName', { uname }, function ({ code, msg }) {
             $('form b').eq(0).html(msg)
             code ? $('form b').eq(0).css('color', 'green') : $('form b').eq(0).css('color', 'red')
+            if (!code) {
+                flag = false
+            } else {
+                flag = true
+            }
         })
     })
-    let flag = true;
     $('form').on('submit', function () {
         // layer.alert('注册成功', {
         //     closeBtn: 1,
@@ -67,12 +72,12 @@ $(function () {
         console.log(flag);
         if (flag) {
             $.post('http://useker.cn/reg', oUser, function (res) {
-                if (!res) {
+                if (typeof res == 'string') {
                     res = JSON.parse(res);
                 }
                 console.log(res);
                 if (res.code == 0) {
-                    $('form i').eq(3).html(`该手机号已经注册 <a style="color:#4e6ef2;cursor:pointer">点击找回密码</a>`);
+                    $('form i').eq(3).html(`该手机号已经注册 <a style="color:#4e6ef2;cursor:pointer" href="login.html">点击找回密码</a>`);
                 } else {
                     layer.alert('注册成功', {
                         closeBtn: 1,
