@@ -39,6 +39,36 @@ $(function () {
 
     })
 })
+//立即购买
+$(function () {
+    $('.upper_r .button a').eq(0).on('click', function () {
+        let uname = localStorage.getItem('sh_user') || undefined;
+        if (uname == null) {
+            layer.alert('购买失败,你还没有登录账号', {
+                closeBtn: 1,
+                anim: 2,
+                btn: ['取消', '去登录'],
+                icon: 2,
+                yes: function () {
+                    layer.msg('loading')
+                },
+                btn2: function () {
+                    layer.msg('跳转中...');
+                    location = './login.html';
+                }
+            })
+            return;
+        }
+
+        let price = $('.upper_r .price .jg i').text().trim();
+        let num = parseInt($('.upper_r .num input').val());
+        let total = parseFloat(price) * parseInt(num);
+        sessionStorage.setItem("sh_buy", JSON.stringify(total));
+
+        location.replace('./pay.html');
+    })
+})
+
 
 //加入购物车
 $(function () {
@@ -134,7 +164,6 @@ $(function () {
             })
             return;
         }
-        console.log(111);
         //获取数据存入cookie
         let id = $('.model_b i').text().trim();
         let name = $('.upper_r .title').text().trim();

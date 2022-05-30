@@ -1,13 +1,20 @@
 import $ from "./libs/jquery.js";
 import { getCookie, setCookie } from "./libs/tools.js";
 
+$(function () {
 
+})
 var total = () => {
-    let goodsList = JSON.parse(getCookie("sh_cart") || '[]');
+    let goodsList = JSON.parse(sessionStorage.getItem("sh_buy"));
     let total = 0;
-    goodsList.forEach(function (item) {
-        total += parseInt(item.total)
-    })
+    console.log(typeof goodsList == 'number');
+    if (typeof goodsList == 'number') {
+        total = goodsList;
+    } else {
+        goodsList.forEach(function (item) {
+            total += parseInt(item.total)
+        })
+    }
     $('.total').html(total);
 }
 countTime();

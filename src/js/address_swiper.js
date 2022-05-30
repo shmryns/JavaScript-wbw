@@ -161,20 +161,15 @@ $(".save_btn").click(function () {
     return false;
 });
 //清空提示
-$(".info_box .name_box input").focus(function () {
-    $('.name_box span').html();
-    $('.tel_box span').html();
-});
-$(".info_box .tel_box input").focus(function () {
-    $('.name_box span').html();
-    $('.tel_box span').html();
+$('body').on('focus', '.info_box input', function () {
+    $(this).siblings('span').html('');
 });
 
 function allAddress () {
     var _html = "";
     addressList.forEach(function (item) {
         _html += '<div class="address fl"><p><span>' + item.name + '&nbsp;</span><span>' + item
-            .tel + '</span></p><p><i class="iconfont icon-zb"></i><span class="province">' + item.province +
+            .tel + '</span></p><p><i class="iconfont wztb"></i><span class="province">' + item.province +
             '</span><span class="city">' + item.city + '</span><span class="area">' + item.area +
             '</span></p><p>' + item.street + '</p><span class="address_cover">删除</span></div>';
     });
@@ -190,3 +185,16 @@ $(".address_box").on("click", ".address", function () {
     $(this).find("i").addClass("red").parents(".address").siblings().find("i").removeClass("red");
     $(this).find("p:first").addClass("red").parents(".address").siblings().find("p:first").removeClass("red");
 });
+
+$('.tijiao').on('click', function () {
+    $('.address_box').each(function (index, item) {
+        if (!$(item).find('.address').hasClass('style')) {
+            layer.alert('请选择收货地址', {
+                anim: 2,
+                icon: 2,
+            })
+            return false;
+        }
+        location.replace('./pay.html');
+    })
+})
