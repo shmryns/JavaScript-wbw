@@ -21,11 +21,11 @@
     } else {
         root.LazyLoad = factory(root);
     }
-}) (typeof global !== "undefined" ? global : this.window || this.global, function (root) {
+})(typeof global !== "undefined" ? global : this.window || this.global, function (root) {
 
     "use strict";
 
-    if (typeof define === "function" && define.amd){
+    if (typeof define === "function" && define.amd) {
         root = window;
     }
 
@@ -45,7 +45,7 @@
     * @param {Object}   objects  The objects to merge together
     * @returns {Object}          Merged values of defaults and options
     */
-    const extend = function ()  {
+    const extend = function () {
 
         let extended = {};
         let deep = false;
@@ -81,7 +81,7 @@
         return extended;
     };
 
-    function LazyLoad(images, options) {
+    function LazyLoad (images, options) {
         this.settings = extend(defaults, options || {});
         this.images = images || document.querySelectorAll(this.settings.selector);
         this.observer = null;
@@ -89,7 +89,7 @@
     }
 
     LazyLoad.prototype = {
-        init: function() {
+        init: function () {
 
             /* Without observers load everything and bail out early. */
             if (!root.IntersectionObserver) {
@@ -104,7 +104,7 @@
                 threshold: [this.settings.threshold]
             };
 
-            this.observer = new IntersectionObserver(function(entries) {
+            this.observer = new IntersectionObserver(function (entries) {
                 Array.prototype.forEach.call(entries, function (entry) {
                     if (entry.isIntersecting) {
                         self.observer.unobserve(entry.target);
@@ -162,7 +162,7 @@
         }
     };
 
-    root.lazyload = function(images, options) {
+    root.lazyload = function (images, options) {
         return new LazyLoad(images, options);
     };
 

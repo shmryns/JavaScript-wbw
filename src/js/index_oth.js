@@ -45,6 +45,7 @@ $(function () {
     })
 })
 
+//移入显示
 $(function () {
     $('.m_box').on('mouseenter', function () {
         $('.sub').hide().eq($(this).index()).show()
