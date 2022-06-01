@@ -53,9 +53,11 @@ function sumPrice () {
     let goods_sum = 0;
     let price = 0;
     let $all_checked = $(".renderGoods").find("[type='checkbox']:checked");
+    console.log($all_checked);
     Array.from($all_checked).forEach(function (item) {
-        goods_sum += parseInt($(item).parents(".goods").find("[type='text']").val());
-        price += parseFloat($(item).parents(".goods").find(".total em").text());
+        console.log($(item).parents(".goods").find("[type='text']").val());
+        goods_sum = parseInt(goods_sum) + parseInt($(item).parents(".goods").find("[type='number']").val());
+        price = parseFloat(price) + parseFloat($(item).parents(".goods").find(".total em").text());
     });
     $(".sum").html(goods_sum);
     $(".total_price").html(price);
@@ -98,7 +100,7 @@ $(function () {
     //手动改input的值
     $('.renderGoods').on('input', 'input', function () {
         if ($(this).val() == '') {
-            return 
+            return
         }
         let num = parseInt($(this).val());
         let price = parseFloat($(this).parents(".goods").find(".price em").text());
@@ -235,6 +237,7 @@ $(function () {
     //去结算
     $('.gogo').on('click', function () {
         let sum = $('.fool .sum').text().trim();
+        console.log(sum);
         if (sum == 0) {
             layer.alert("还没有选中商品")
         } else {

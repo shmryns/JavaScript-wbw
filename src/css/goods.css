@@ -493,8 +493,8 @@ body .layui-layer-msg {
 
 .main .w .upper .upper_l .zoom .big_img {
   position: absolute;
-  width: 312.5px;
-  height: 312.5px;
+  width: 541.7px;
+  height: 541.7px;
   left: 500px;
   top: 9px;
   overflow: hidden;
@@ -521,8 +521,8 @@ body .layui-layer-msg {
 }
 
 .main .w .upper .upper_l .zoom .img_wrap .smallArea {
-  width: 150px;
-  height: 150px;
+  width: 260px;
+  height: 260px;
   position: absolute;
   display: none;
   background: rgba(200, 250, 200, 0.4);

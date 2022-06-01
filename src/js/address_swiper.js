@@ -18,7 +18,7 @@ $(function () {
         init(uname)
     })
 })
-
+            
 function sumPrice () {
     var price = 0;
     var $subtotal_span = $(".subtotal span");
@@ -105,8 +105,6 @@ $(".goods_content").on("click", ".add_btn", function () {
     setCookie("sh_cart", JSON.stringify(goodsList), 1);
     numall();
 });
-
-
 
 
 //三级联动

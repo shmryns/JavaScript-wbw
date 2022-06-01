@@ -215,6 +215,7 @@ $(function () {
 
 //商品详情放大镜效果
 $(function () {
+    // 480/1000=200/417
     let index = 0;
     $('.bottom ul img').eq(index).css('opacity', 1);
     $('.img_wrap img').eq(index).show();
