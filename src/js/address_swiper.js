@@ -10,7 +10,7 @@ $(function () {
             $('.w_header_right li').eq(1).hide();
         }
     }
-    let uname = localStorage.getItem('sh_user');
+    let { uname } = JSON.parse(localStorage.getItem('sh_user') || '{}');
     init(uname);
     //监听登录人信息
     window.addEventListener('storage', function () {
@@ -18,7 +18,7 @@ $(function () {
         init(uname)
     })
 })
-            
+
 function sumPrice () {
     var price = 0;
     var $subtotal_span = $(".subtotal span");

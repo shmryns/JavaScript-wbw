@@ -39,7 +39,7 @@ function countTime () {
     var date = new Date();
     var now = date.getTime();
     //设置截止时间  
-    var str = "2022/6/1 00:00:00";
+    var str = "2022/6/12 00:00:00";
     var endDate = new Date(str);
     var end = endDate.getTime();
 

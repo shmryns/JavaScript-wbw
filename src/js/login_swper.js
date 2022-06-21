@@ -69,48 +69,28 @@ class LoginSwper {
                 uname: this.uname.value.trim(),
                 upwd: this.upwd.value.trim()
             }
-            self.loading(16);
-            $.post("http://useker.cn/login", oUser, function (res) {
-                if (!res.code) {
+            $.post("http://127.0.0.1:3000/account/login", oUser, function (res) {
+                if (res.code != 1) {
                     self.oCw.css('display', 'block');
                     self.oName.css('border-color', '#cc5252');
                     self.oPwd.css('border-color', '#cc5252');
-                    self.loading(2);
+                    layer.msg(res.msg, { icon: 2, time: 1000 });
                     return false;
                 }
-                self.loading(1);
-                localStorage.setItem('sh_user', oUser.uname);
+                //去掉y轴的滚动条
+                layer.msg(res.msg, { icon: 1, time: 1000 })
+                var user = {
+                    uId: res.data.uId,
+                    uname: res.data.uname,
+                    token: res.token
+                }
+                localStorage.setItem('sh_user', JSON.stringify(user));
                 setTimeout(() => {
                     location = './index.html';    //成功登录
-                }, 1000)
+                }, 1500)
             });
             self.oYzm.hide()
             return false;
-        })
-    }
-    loading (a) {
-        layer.msg('...', {
-            icon: a,
-            shade: [0.3, '#000'],
-            time: 2800,
-            success: function (layero) {
-                layero.css({
-                    'color': '#fff',
-                    'border': 'none',
-                    'height': '200px'
-                })
-                layero.find('.layui-layer-content').css({
-                    'text-align': 'center',
-                    'padding': '40px 20px 15px 20px'
-                })
-                layero.find('.layui-layer-content .layui-layer-ico').css({
-                    'top': '0',
-                    'right': '0',
-                    'bottom': '0',
-                    'left': '0',
-                    'margin': '10px auto'
-                })
-            }
         })
     }
 }

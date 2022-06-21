@@ -14,7 +14,7 @@ $(function () {
             $('.login_tip').css('display', 'none');
         }
     }
-    let uname = localStorage.getItem('sh_user');
+    let { uname } = JSON.parse(localStorage.getItem('sh_user') || '{}');
     init(uname);
     //监听登录人信息
     window.addEventListener('storage', function () {
@@ -42,8 +42,8 @@ $(function () {
 //立即购买
 $(function () {
     $('.upper_r .button a').eq(0).on('click', function () {
-        let uname = localStorage.getItem('sh_user') || undefined;
-        if (uname == null) {
+        let { uname } = JSON.parse(localStorage.getItem('sh_user') || '{}');
+        if (uname == undefined) {
             layer.alert('购买失败,你还没有登录账号', {
                 closeBtn: 1,
                 anim: 2,
@@ -148,7 +148,7 @@ $(function () {
 
     $('.button .btn').on('click', function () {
         let uname = localStorage.getItem('sh_user') || undefined;
-        if (uname == null) {
+        if (uname == undefined) {
             layer.alert('加购失败,你还没有登录账号', {
                 closeBtn: 1,
                 anim: 2,

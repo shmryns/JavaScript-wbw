@@ -53,11 +53,9 @@ function sumPrice () {
     let goods_sum = 0;
     let price = 0;
     let $all_checked = $(".renderGoods").find("[type='checkbox']:checked");
-    console.log($all_checked);
     Array.from($all_checked).forEach(function (item) {
-        console.log($(item).parents(".goods").find("[type='text']").val());
-        goods_sum = parseInt(goods_sum) + parseInt($(item).parents(".goods").find("[type='number']").val());
-        price = parseFloat(price) + parseFloat($(item).parents(".goods").find(".total em").text());
+        goods_sum += parseInt($(item).parents(".goods").find("[type='number']").val());
+        price += parseInt($(item).parents(".goods").find(".total em").text());
     });
     $(".sum").html(goods_sum);
     $(".total_price").html(price);
@@ -82,7 +80,7 @@ $(function () {
             $('.login_tip').css('display', 'none');
         }
     }
-    let uname = localStorage.getItem('sh_user');
+    let { uname } = JSON.parse(localStorage.getItem('sh_user') || '{}');
     init(uname);
     //监听登录人信息
     window.addEventListener('storage', function () {
@@ -98,7 +96,7 @@ $(function () {
     $('.renderGoods').append(renderGoods(goodsList));
     numall();
     //手动改input的值
-    $('.renderGoods').on('input', 'input', function () {
+    $('.renderGoods').on('input', '[type=number]', function () {
         if ($(this).val() == '') {
             return
         }
@@ -164,6 +162,7 @@ $(function () {
     $('.cn_top .all').on('click', function () {
         $('.renderGoods .check').prop("checked", $(this).prop('checked'))
         sumPrice();
+        console.log(222);
     })
     //选中所有全部按钮选中
     $('.renderGoods').on('click', '.check', function () {
@@ -172,6 +171,7 @@ $(function () {
     })
     //删除单个商品
     $('.renderGoods').on('click', '.del', function () {
+        console.log(11);
         let index = $(this).parents('.goods').index();
         layer.confirm("<div class='layui-layer-content'><p>确定删除吗?</div>", {
             title: "删除",

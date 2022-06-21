@@ -1,0 +1,60 @@
+一 .注册
+   请求方式  : post
+   请求的服务器: http://124.220.199.146:3000/account/reg
+   数据
+   {uname:string,upwd:string,uphone:string }
+
+二.登录接口
+   请求方式  : post
+   请求的服务器:http://124.220.199.146:3000/account/login
+   数据
+   {uname:string,upwd:string }
+
+三.判断名字接口
+   请求方式  : get
+   请求的服务器:http://124.220.199.146:3000/account/checkName
+   数据
+   {uname:string }
+
+三.加入购物车接口
+  请求方式  : post    
+   请求的服务器: http://124.220.199.146:3000/cart/add
+   数据
+     cname,
+     cprice,
+     cnum,
+     cimg,
+     uId    购买人,在登录成功后的localstroage里头
+
+四.渲染购物车页面 
+(跳转购物车列表页面就要
+显示当前购买人的数据)
+
+请求方式  : get    
+   请求的服务器: `http://124.220.199.146:3000/cart/search/${uid}`
+   数据
+   
+     uId    购买人,在登录成功后的localstroage里头
+
+
+五.修改数量
+请求方式  : post    
+   请求的服务器: http://124.220.199.146:3000/cart/modify
+   数据
+   
+    cnum,  产品数量
+    cId,   产品id  (在购物车的页面上)
+
+    
+
+五.删除购物车
+请求方式  : post    
+   请求的服务器: http://124.220.199.146:3000/cart/delete
+   数据
+    cId,   产品id  (在购物车的页面上)
+
+     $.ajax({
+        url:"http://124.220.199.146:3000/cart/delete",
+        type:'post',
+        data:{cId:$('').data("cid")}
+     }).then()

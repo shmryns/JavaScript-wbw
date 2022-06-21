@@ -11,7 +11,7 @@ $(function () {
             $('.login_tip').css('display', 'none');
         }
     }
-    let uname = localStorage.getItem('sh_user');
+    let { uname } = JSON.parse(localStorage.getItem('sh_user') || '{}');
     init(uname);
     //监听登录人信息
     window.addEventListener('storage', function () {
@@ -193,7 +193,7 @@ $(function () {
 
 //倒计时
 $(function () {
-    let endDate = new Date(1653827925453)
+    let endDate = new Date(1655457925453)
     setInterval(() => {
         let data = new Date();
         let current = endDate - data;
